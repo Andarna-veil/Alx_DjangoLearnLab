@@ -1,4 +1,5 @@
 from bookshelf.models import Book
 
-# Retrieve all books
-Book.objects.all()  # Expected output: <QuerySet [<Book: 1984>]>
+# Retrieve the book we created
+book = Book.objects.get(id=1)
+book  # Expected output: <Book: 1984>
