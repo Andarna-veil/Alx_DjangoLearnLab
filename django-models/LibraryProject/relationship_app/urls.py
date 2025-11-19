@@ -11,6 +11,9 @@ urlpatterns = [
     path("register/", register_view, name="register"),
     path("login/", LoginView.as_view(template_name="relationship_app/login.html"), name="login"),
     path("logout/", LogoutView.as_view(template_name="relationship_app/logout.html"), name="logout"),
+    path('add_book/', views.add_book, name='add_book'),
+path('edit_book/<int:pk>/', views.edit_book, name='edit_book'),
+path('delete_book/<int:pk>/', views.delete_book, name='delete_book'),
 
     # Role-based URLs
     path("admin-area/", admin_view, name="admin_view"),
