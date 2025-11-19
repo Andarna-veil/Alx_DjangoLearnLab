@@ -41,6 +41,17 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+class Book(models.Model):
+    title = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
+    published_date = models.DateField()
+
+    class Meta:
+        permissions = [
+            ("can_add_book", "Can add a new book"),
+            ("can_change_book", "Can change an existing book"),
+            ("can_delete_book", "Can delete a book"),
+        ]
 
 # Library model
 class Library(models.Model):

@@ -1,5 +1,24 @@
 from django.contrib.auth.decorators import user_passes_test, login_required
 from django.shortcuts import render
+from django.contrib.auth.decorators import permission_required
+from django.shortcuts import render, redirect, get_object_or_404
+@permission_required('relationship_app.can_add_book')
+def add_book(request):
+    return render(request, 'add_book.html')
+
+
+@permission_required('relationship_app.can_change_book')
+def edit_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    return render(request, 'edit_book.html', {'book': book})
+
+
+@permission_required('relationship_app.can_delete_book')
+def delete_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    book.delete()
+    return redirect('home')
+
 # ensure UserProfile available via user.profile
 
 # helper tests
